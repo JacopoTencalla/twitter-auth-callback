@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Callback</title>
+</head>
+<body>
+    <h1>Autenticazione Twitter completata</h1>
+    <div id="callback-result"></div>
+    
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const resultDiv = document.getElementById('callback-result');
+        
+        if (code) {
+            resultDiv.innerHTML = `
+                <p>✅ Codice ricevuto: <strong>${code}</strong></p>
+                <p>Puoi chiudere questa finestra.</p>
+            `;
+            
+            // Qui puoi gestire il code come preferisci
+            console.log('Twitter auth code:', code);
+        } else {
+            resultDiv.innerHTML = '<p>❌ Nessun codice di autorizzazione ricevuto.</p>';
+        }
+    </script>
+</body>
+</html>
